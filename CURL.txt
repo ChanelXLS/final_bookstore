@@ -1,0 +1,9 @@
+curl -X POST http://localhost:5000/api/auth/login -H "Content-Type: application/json" -d "{\"email\": \"admin@example.com\", \"password\": \"123\"}"
+
+curl -X GET http://localhost:5000/api/admin/clientes -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sIjoiYWRtaW4iLCJpYXQiOjE3MTcwNDM4MDIsImV4cCI6MTcxNzA0NzQwMn0.eSgSXgcbJAv1VmJcsHDDVFOkFcWpopo67L5cSP0FwYE"
+
+curl -X GET http://localhost:5000/api/admin/books -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sIjoiYWRtaW4iLCJpYXQiOjE3MTcwNDM4MDIsImV4cCI6MTcxNzA0NzQwMn0.eSgSXgcbJAv1VmJcsHDDVFOkFcWpopo67L5cSP0FwYE"
+
+curl -X PUT http://localhost:5000/api/admin/libros/10 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sIjoiYWRtaW4iLCJpYXQiOjE3MTcwNDM4MDIsImV4cCI6MTcxNzA0NzQwMn0.eSgSXgcbJAv1VmJcsHDDVFOkFcWpopo67L5cSP0FwYE" -H "Content-Type: application/json" -d "{\"titulo\": \"Nuevo título\", \"autor\": \"Nuevo autor\", \"descripcion\": \"Nueva descripción\", \"precio\": 29.99, \"stock\": 10}"
+
+curl -X POST http://localhost:5000/api/admin/libros -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sIjoiYWRtaW4iLCJpYXQiOjE3MTcwNDM4MDIsImV4cCI6MTcxNzA0NzQwMn0.eSgSXgcbJAv1VmJcsHDDVFOkFcWpopo67L5cSP0FwYE" -H "Content-Type: application/json" -d "{\"titulo\": \"Nuevo título\", \"autor\": \"Autor del nuevo libro\", \"descripcion\": \"Descripción del nuevo libro\", \"precio\": 19.99, \"stock\": 20}"

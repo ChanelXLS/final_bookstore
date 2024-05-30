@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>Carrito de Compras</title>
+</head>
+<body>
+    <h1>Carrito de Compras</h1>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+    <a href="/book">Books</a>
+    <a href="/orders">Orders</a>
+    <button id="logoutButton">Logout</button>
+    <ul id="cartItems"></ul>
+    <button id="placeOrderButton">Realizar Pedido</button>
+    <div id="message" style="display: none;"></div>
+    <script>
+        const token = localStorage.getItem('token');
+
+        document.getElementById('logoutButton').addEventListener('click', () => {
+            localStorage.removeItem('token');
+            showMessage('Sesión cerrada', 'green');
+            setTimeout(() => {
+                window.location.href = '/login';
+            }, 2000);
+        });
+
+        async function fetchCartProducts() {
+            const token = localStorage.getItem('token');
+            const response = await fetch('/api/cart', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (response.ok) {
+                const cartProducts = await response.json();
+                displayCartProducts(cartProducts);
+            } else {
+                showMessage('Carrito vacío', 'red');
+            }
+        }
+
+        function displayCartProducts(cartProducts) {
+            const cartItems = document.getElementById('cartItems');
+            cartItems.innerHTML = '';
+
+            cartProducts.forEach(product => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${product.titulo} - $${product.precio} - Cantidad: ${product.cantidad}`;
+                
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Eliminar una unidad';
+                removeButton.addEventListener('click', () => removeFromCart(product.id_libro));
+
+                listItem.appendChild(removeButton);
+                cartItems.appendChild(listItem);
+            });
+        }
+
+        async function removeFromCart(productId) {
+            const token = localStorage.getItem('token');
+            const response = await fetch(`/api/cart/${productId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (response.ok) {
+                showMessage('Producto eliminado del carrito', 'green');
+                fetchCartProducts();
+            } else {
+                showMessage('Error al eliminar el producto del carrito', 'red');
+            }
+        }
+
+        async function placeOrderFromCart() {
+            const cartItems = document.getElementById('cartItems').children;
+            if (cartItems.length === 0){
+                showMessage('No tiene ni un producto en tu carrito!', 'red');
+                return;
+            }
+
+            const token = localStorage.getItem('token');
+            const response = await fetch('/api/cart/place-order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (response.ok) {
+                showMessage('¡Pedido realizado con éxito!', 'green');
+                setTimeout(() => {
+                    window.location.href = '/orders';
+                }, 2000);
+            } else {
+                showMessage('Error al realizar el pedido', 'red');
+            }
+        }
+
+        window.addEventListener('load', fetchCartProducts);
+
+        document.getElementById('placeOrderButton').addEventListener('click', placeOrderFromCart);
+
+        function showMessage(text, color) {
+            const message = document.getElementById('message');
+            message.textContent = text;
+            message.style.color = color;
+            message.style.display = 'block';
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
