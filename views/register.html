@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="https://i.pinimg.com/736x/04/67/ca/0467ca585a1a688fa9d0e53f23c27780.jpg" type="image/jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <title>Register</title>
 </head>
@@ -21,9 +22,11 @@
         <button type="submit">Register</button>
     </form>
     <div id="message" style="display: none;"></div>
-    <a href="/login">Login</a>
-    <a href="/book">Books</a>
-    <a href="/orders">Orders</a>
+    <div class="navbar">
+        <a href="/login">Login</a>
+        <a href="/book">Books</a>
+        <a href="/orders">Orders</a>
+        </div>
     <script>
         document.getElementById('registerForm').addEventListener('submit', async (e) => {
             e.preventDefault();

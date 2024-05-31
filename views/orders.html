@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="https://i.pinimg.com/736x/04/67/ca/0467ca585a1a688fa9d0e53f23c27780.jpg" type="image/jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <title>Orders</title>
 </head>
 <body>
     <h1>Your Orders</h1>
-    <a id="loginLink" href="/login">Login</a>
-    <a href="/register">Register</a>
-    <a href="/book">Books</a>
-    <a href="/cart">Cart</a>
+    <div class="navbar">
+        <a id="loginLink" href="/login">Login</a>
+        <a href="/register">Register</a>
+        <a href="/book">Books</a>
+        <a href="/cart">Cart</a>
+        </div>
     <button id="logoutButton" style="display: none;">Logout</button>
     <ul id="orderList"></ul>
     <div id="message" style="display: none;"></div>
+    <div id="gif_izq_b">
+        <img src="https://icon2.cleanpng.com/20231216/psk/transparent-book-pink-cardboard-box-books-inside-box-handle-on-books-stored-in-pink-box-with-1710972114223.webp" alt="books">
+    </div>
+
     <script>
         // Obtener el token del almacenamiento local
         const token = localStorage.getItem('token');

@@ -23,7 +23,7 @@ exports.getAllBooks = async (req, res) => {
   exports.searchProducts = async (req, res) => {
     const { query } = req.query;
     try {
-      const products = await pool.query('SELECT * FROM libros WHERE nombre LIKE ?', [`%${query}%`]);
+      const products = await pool.query('SELECT * FROM libros WHERE titulo LIKE ?', [`%${query}%`]);
       res.json(products); 
     } catch (error) {
       console.error('Error searching products:', error);

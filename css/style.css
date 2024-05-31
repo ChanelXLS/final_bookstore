@@ -1,0 +1,202 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-image: url('https://media.istockphoto.com/id/688301056/es/foto/una-imagen-desenfocada-de-una-biblioteca-moderna.webp?b=1&s=170667a&w=0&k=20&c=QVMuRWhVQ3cXjeiqLvLyGxWlGBcj87Nh1p8rW0mYRY4=');
+    background-size: cover;
+    background-attachment: fixed;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-top: 50px;
+    color: #333;
+    font-size: 90px;
+    animation: fadeIn 1s ease-in-out;
+    
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+a, button {
+    margin: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #a6c9ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+a:hover, button:hover {
+    background-color: #5d9bff;
+    transform: scale(1.05);
+}
+
+/* Input Styles */
+input[type="text"] {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #5d9bff;
+}
+
+/* Product List Styles */
+#productList {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+#productList li {
+    background-color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+#productList li:hover {
+    transform: scale(1.02);
+}
+
+#productList li button {
+    background-color: #8bc34a;
+}
+
+#productList li button:hover {
+    background-color: #6fa035;
+}
+
+/* Message Styles */
+#message {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    display: none;
+    transition: opacity 0.3s;
+}
+
+#message.green {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+#message.red {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.message-show {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+#gif_izq img {
+    width: 20%; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 60%;
+}
+
+#gif_izq {
+    position: fixed; /* Cambia a posición fija para que se mantenga visible al desplazarse */
+    top: 50px;
+    left: 70px;
+    z-index: 1000; /* Ajusta el z-index si es necesario */
+}
+
+
+#gif_izq_m img {
+    width: 30%; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 60%;
+}
+
+#gif_izq_m {
+    position: fixed; /* Cambia a posición fija para que se mantenga visible al desplazarse */
+    top: 50px;
+    left: 70px;
+    z-index: 1000; /* Ajusta el z-index si es necesario */
+}
+
+#gif_izq_b img {
+    width: 30%; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 60%;
+}
+
+#gif_izq_b {
+    position: fixed; /* Cambia a posición fija para que se mantenga visible al desplazarse */
+    top: 50px;
+    left: 70px;
+    z-index: 1000; /* Ajusta el z-index si es necesario */
+}
+
+
+.navbar {
+    /* Agrega margen superior para evitar superposición con la imagen */
+    margin-top: 50px;
+}
+
+
+.cartItems {
+    border: 2px solid white;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.cartItems {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}

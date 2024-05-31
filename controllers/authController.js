@@ -9,6 +9,7 @@ exports.register = async (req, res) => {
     await pool.query('INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)', [nombre, email, hashedPassword]);
     res.status(201).send('User registered');
   } catch (error) {
+    console.log(error)
     res.status(500).send('Error registering user');
   }
 };
@@ -25,6 +26,6 @@ exports.login = async (req, res) => {
       res.status(401).send('Invalid credentials');
     }
   } catch (error) {
-    res.status(500).send('Error logging in');
+    res.status(500).send(error);
   }
 };
